@@ -29,7 +29,5 @@ cd server
 ```
 
 ### MQTT
-
-The topic used for MQTT is `jetson/webcam/faces`. This path was chosen as it describes in a hierarchical fashion 1. which device type the data came from (`jetson`), 2. the sensor type of that device (`webcam`), and 3. the type of data coming in (`faces`).
-
-The QoS chosen was `0` which refers to at most once delivery. This QoS was chosen due to the streaming nature of the data. Since we are dealing with a video stream, if we drop a frame, the subsequent frames will have similar data assuming we are capturing at a reasonable FPS.
+ * Topic `jetson/webcam/faces`
+ * QoS 0
