@@ -1,6 +1,7 @@
 import os
 import paho.mqtt.client as mqtt
 from uuid import uuid4
+from datetime import datetime
 # import ibm_boto3
 # from ibm_botocore.client import Config, ClientError
 import boto3
@@ -16,10 +17,12 @@ client.connect(os.environ['MQTT_BROKER'])
 
 
 def on_message(client, userdata, message):
+    # segment images by current minute to make them easier to find
+    now = datetime.now().strftime('%Y-%m-%d-%H-%M')
     cos.put_object(
         Body=message.payload,
         Bucket=bucket,
-        Key='hw3/%s.jpg' % uuid4())
+        Key='hw3/%s/%s.jpg' % (now, uuid4()))
 
 
 client.on_message = on_message

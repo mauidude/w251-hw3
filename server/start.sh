@@ -17,7 +17,7 @@ fi
 # must start mqtt broker first
 docker run --rm --name broker --network hw03 -p 1883:1883 -d hw03-vm-broker
 docker run --rm --name storage --network hw03 -d \
-    -e COS_ENDPOINT=https://s3.us.cloud-object-storage.appdomain.cloud
+    -e COS_ENDPOINT=https://s3.us.cloud-object-storage.appdomain.cloud \
     -e MQTT_BROKER=broker \
     -e BUCKET=shane-w251 \
     -e AWS_ACCESS_KEY_ID=$ACCESS_KEY \
