@@ -11,6 +11,7 @@ outgoing.connect(os.environ['MQTT_OUTGOING_BROKER'])
 
 
 def on_message(client, userdata, message):
+    print('publishing message')
     outgoing.publish('jetson/webcam/faces', message.payload, qos)
 
 

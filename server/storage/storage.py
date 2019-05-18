@@ -19,10 +19,12 @@ client.connect(os.environ['MQTT_BROKER'])
 def on_message(client, userdata, message):
     # segment images by current minute to make them easier to find
     now = datetime.now().strftime('%Y-%m-%d-%H-%M')
+    key = 'hw3/%s/%s.jpg' % (now, uuid4())
+    print('saving face to %s', key)
     cos.put_object(
         Body=message.payload,
         Bucket=bucket,
-        Key='hw3/%s/%s.jpg' % (now, uuid4()))
+        Key=key)
 
 
 client.on_message = on_message

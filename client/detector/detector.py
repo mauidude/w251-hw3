@@ -19,7 +19,8 @@ while True:
     gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
-    print('found %d faces' % len(faces))
+    if len(faces) > 0:
+        print('found %d faces' % len(faces))
 
     for (x, y, w, h) in faces:
         face = gray[y:y+h, x:x+w]
