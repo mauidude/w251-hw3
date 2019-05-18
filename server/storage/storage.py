@@ -24,7 +24,10 @@ def on_message(client, userdata, message):
     cos.put_object(
         Body=message.payload,
         Bucket=bucket,
-        Key=key)
+        Key=key,
+        ContentType='image/jpeg',
+        ACL='public-read'
+    )
 
 
 client.on_message = on_message
