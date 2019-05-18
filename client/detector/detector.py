@@ -4,8 +4,7 @@ import paho.mqtt.client as mqtt
 
 # 1 should correspond to /dev/video1 , your USB camera. The 0 is reserved for the TX2 onboard camera
 cap = cv.VideoCapture(0)
-face_cascade = cv.CascadeClassifier(
-    cv.data.haarcascades + 'haarcascade_frontalface_default.xml')
+face_cascade = cv.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 qos = int(os.environ['MQTT_QOS'])
 

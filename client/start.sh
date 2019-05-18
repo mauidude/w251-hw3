@@ -18,4 +18,4 @@ fi
 docker run --rm --name broker --network hw03 -p 1883:1883 -d hw03-jetson-broker
 
 docker run --rm --name forwarder --network hw03 -e MQTT_OUTGOING_BROKER=$REMOTE_BROKER -d hw03-jetson-forwarder
-docker run --rm --name detector --network hw03 -d hw03-jetson-detector
+docker run --rm --name detector --device=/dev/video1:/dev/video0 --network hw03 -d hw03-jetson-detector
